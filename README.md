@@ -1,2 +1,2 @@
-# aide-skyfaction
-A Python file who helps me to automate certain things for my mod.
+# aide-minecraft
+Python files who help me to automate certain things.

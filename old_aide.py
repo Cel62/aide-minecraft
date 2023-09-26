@@ -16,7 +16,7 @@ def convertissement_model_item():
     remplacer_chaine('items', 'item')
     supprimer_bloc_texte('"display"', "}")
 
-# ---------------------------------------------------------------------------------------------------------------------------------- #
+# -------------------------------------------------------------------------------------------------------------------- #
 
 def remplacer_chaine(ancienne_chaine, nouvelle_chaine, dossier = './import'):
     from os import listdir

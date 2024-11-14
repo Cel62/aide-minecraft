@@ -5,16 +5,12 @@ from os.path import isfile, join
 mod_id = "skyfaction"
 
 
-def register_simple_item(unlocalized_name):
-    if isinstance(unlocalized_name, str):
-        return "public static final Item " + unlocalized_name.upper() + ' = registerItem("' + unlocalized_name.lower() + '", new Item(new FabricItemSettings()));'
-    return "unlocalized_name n'est pas une chaîne de caractères."
+def register_simple_item(unlocalized_name: str):
+    return "public static final Item " + unlocalized_name.upper() + ' = registerItem("' + unlocalized_name.lower() + '", new Item(new FabricItemSettings()));'
 
 
-def register_simple_block(name_block):
-    if isinstance(name_block, str):
-        return "public static final Block " + name_block.upper() + ' = registerBlock("' + name_block.lower() + '", new Block(FabricBlockSettings.create()));'
-    return "name_block n'est pas une chaîne de caractères."
+def register_simple_block(name_block: str):
+    return "public static final Block " + name_block.upper() + ' = registerBlock("' + name_block.lower() + '", new Block(FabricBlockSettings.create()));'
 
 
 # Convertisseur 1.8 vers 1.20
@@ -72,7 +68,7 @@ def supprimer_bloc_texte(debut_bloc, fin_bloc, dossier='./import'):
 
                 with open(chemin_fichier, 'w', encoding="utf-8") as f:
                     f.writelines(lignes)
-                    # ❗attention ça peut peut-être faire de la merde avec certains fichiers, à voir
+                    # ❗attention ça peut faire de la merde avec certains fichiers, à voir
                     if fin_bloc == "}":
                         f.writelines(["}"])
                         remplacer_chaine('},', '}')
@@ -100,7 +96,7 @@ def supprimer_ligne_texte(debut_ligne, fin_ligne, dossier='./import'):
                     f.writelines(lignes)
 
 
-# 1.8 :  item.nitrite_ingot.name       =  Nitrite Ingot -> conversion
+# 1.8 :   item.nitrite_ingot.name       =  Nitrite Ingot -> conversion
 # 1.20 : "item.skyfaction.nitrite_ingot": "Nitrite Ingot",
 def traduction(category, unlocalized_name, translated_name, withComma=False):
     if isinstance(category, str) or isinstance(unlocalized_name, str) or isinstance(translated_name, str) or isinstance(
@@ -129,4 +125,3 @@ def rename_colorblock_file(importFolder="./import", exportFolder="./export"):
         os.rename(importFolder + "/" + fichier, exportFolder + "/" + name)
 
 
-rename_colorblock_file()
